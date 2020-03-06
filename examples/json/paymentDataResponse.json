@@ -1,0 +1,16 @@
+{
+	"apiVersionMinor": 0,
+	"apiVersion": 2,
+	"paymentMethodData": {
+		"description": "Mastercard •••• 1329",
+		"tokenizationData": {
+			"type": "PAYMENT_GATEWAY",
+			"token": "{\"signature\":\"MEQCIH2Bz+/cqK0RgUKCKOs5z6fbbFJ4fKkXpDsaHFdyOdyOAiBTmcTi/pJWQrUSF8cwMqTv8bawdgoMTAs6suVHltghLQ\\u003d\\u003d\",\"protocolVersion\":\"ECv1\",\"signedMessage\":\"{\\\"encryptedMessage\\\":\\\"X0rp0VNeDIYyDikd3Eq9lPGoSff7RZrVhLqQtVzv/ycvvNevNqdqLqoLXXUC/x9bWIyYs6tWdRzyxWXG2UWE+fnO2p5R4klgEWyqsBlCfOTDL0FsoEI0wQfWYgizmDihxZpv48AUXBcosRS9UAV/9nR4RIrI89QwEtMSjGsEpFAZzYDnFSgsHt6MCPwLSM01d1kfbJzChy59qGPfrCFixS6wkbG+uupfNwFCk46rgZB4O4yyfvgoyNWH75JDU45EEkK4vmCYwQxtZx1zGUv7ZZ3R7ykDmXM1QCNy3il9Sz7ubS7OcWKWADVQ2iz1LmLZUU453m+dbntGcZL4bHpTJUF4mws1qulx8DsTSMUyaydCJ2U1bCr6S+6LFDH9/hfb/8vXhk3PsZlmfl8rVe82EwQqVjzthSx/EMALy8uCa15DEAhP1JhnN5PX7Xdl2zMsD7parhgwdd4YBw8BBDM8JWTVmw\\\\u003d\\\\u003d\\\",\\\"ephemeralPublicKey\\\":\\\"BPVAJ9A3f0UFibNUbKNuUX8bnuMssUC8107pGqeA0PhwDKYnCtN8a8hzY7oZWRNm5Wns3Doqx8x3xBG3T26ZMz4\\\\u003d\\\",\\\"tag\\\":\\\"vRWxK2e8sbWAz155jG2opOlNDk0Zoqwk2J+H+ukxqQU\\\\u003d\\\"}\"}"
+		},
+		"type": "CARD",
+		"info": {
+			"cardNetwork": "MASTERCARD",
+			"cardDetails": "1329"
+		}
+	}
+}

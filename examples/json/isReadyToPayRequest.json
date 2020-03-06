@@ -1,0 +1,11 @@
+{
+	"apiVersion": 2,
+	"apiVersionMinor": 0,
+	"allowedPaymentMethods": [{
+		"type": "CARD",
+		"parameters": {
+			"allowedAuthMethods": ["PAN_ONLY", "CRYPTOGRAM_3DS"],
+			"allowedCardNetworks": ["VISA", "ELECTRON", "MASTERCARD", "MAESTRO", "ELO", "ELO_DEBIT"]
+		}
+	}]
+}

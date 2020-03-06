@@ -1,0 +1,35 @@
+version: '3.7'
+
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    container_name: nginx-proxy
+    ports:
+      - "8080:80"
+      - "4430:443"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./nginx/certs:/etc/nginx/certs
+    depends_on:
+      - web
+  web:
+    build: docker/development
+    environment:
+      NODE_PATH: /app/signin-wall
+      VIRTUAL_HOST: gpay.localtest.me
+      VIRTUAL_PORT: 3000
+    ports:
+      - "3000:3000"
+    networks:
+      default:
+        aliases:
+          - gpay.localtest.me
+      proxy:
+        aliases:
+          - gpay.localtest.me
+    volumes:
+      - .:/app
+
+networks:
+  proxy:
+    external: true

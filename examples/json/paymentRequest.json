@@ -1,0 +1,55 @@
+{
+	"apiVersion": 2,
+	"apiVersionMinor": 0,
+	"allowedPaymentMethods": [
+	  {
+		"type": "CARD",
+		"parameters": {
+		  "allowedAuthMethods": [
+			"PAN_ONLY",
+			"CRYPTOGRAM_3DS"
+		  ],
+		  "allowedCardNetworks": [
+			"VISA",
+			"ELECTRON",
+			"MASTERCARD",
+			"MAESTRO",
+			"ELO",
+			"ELO_DEBIT"
+		  ]
+		},
+		"tokenizationSpecification": {
+		  "type": "PAYMENT_GATEWAY",
+		  "parameters": {
+			"gateway": "cielo",
+			"gatewayMerchantId": "exampleGatewayMerchantId"
+		  }
+		}
+	  }
+	],
+	"transactionInfo": {
+	  "displayItems": [
+		{
+		  "label": "Subtotal",
+		  "type": "SUBTOTAL",
+		  "price": "11.00"
+		},
+		{
+		  "label": "Tax",
+		  "type": "TAX",
+		  "price": "1.00"
+		}
+	  ],
+	  "countryCode": "BR",
+	  "currencyCode": "BRL",
+	  "totalPriceStatus": "FINAL",
+	  "totalPrice": "12.00",
+	  "totalPriceLabel": "Total"
+	},
+	"merchantInfo": {
+	  "merchantName": "Example Merchant"
+	},
+	"callbackIntents": [
+	  "PAYMENT_AUTHORIZATION"
+	]
+  }
