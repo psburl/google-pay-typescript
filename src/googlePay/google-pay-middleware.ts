@@ -1,16 +1,18 @@
 import { RequestBuilder } from "./interfaces/request-builder";
 import { PaymentProcessor } from "./interfaces/payment-processor";
 import { PaymentOptionsProvider } from "./interfaces/payment-options-provider";
+import { injectable, inject } from "inversify";
 
+@injectable()
 export class GooglePayMiddleware {
 
     private googlePaymentClient: google.payments.api.PaymentsClient;
 
     public constructor(
-        paymentOptionsProvider: PaymentOptionsProvider,
-        private isReadyToPayRequestBuilder: RequestBuilder<google.payments.api.IsReadyToPayRequest>,
-        private paymentDataRequestBuilder: RequestBuilder<google.payments.api.PaymentDataRequest>,
-        private paymentDataProcessor: PaymentProcessor) { 
+        @inject("PaymentOptionsProvider") paymentOptionsProvider: PaymentOptionsProvider,
+        @inject("IsReadyToPayRequestBuilder") private isReadyToPayRequestBuilder: RequestBuilder<google.payments.api.IsReadyToPayRequest>,
+        @inject("PaymentDataRequestBuilder") private paymentDataRequestBuilder: RequestBuilder<google.payments.api.PaymentDataRequest>,
+        @inject("PaymentProcessor") private paymentDataProcessor: PaymentProcessor) { 
             this.googlePaymentClient = new google.payments.api.PaymentsClient(paymentOptionsProvider.getPaymentOptions());
         }
 

@@ -1,7 +1,9 @@
 import { TransactionInfoProvider } from "../interfaces/transaction-info-provider";
+import { injectable } from "inversify";
 
+@injectable()
 export class StaticTransactionInfoProvider implements TransactionInfoProvider {
-    getTransactionInfo(): google.payments.api.TransactionInfo {
+    public getTransactionInfo(): google.payments.api.TransactionInfo {
         return {
             displayItems: [
                 {

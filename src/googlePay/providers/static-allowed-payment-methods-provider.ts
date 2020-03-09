@@ -1,7 +1,9 @@
 import { AllowedPaymentMethodsProvider } from "../interfaces/allowed-payment-methods-provider";
+import { injectable } from "inversify";
 
+@injectable()
 export class StaticAllowedPaymentMethodsProvider implements AllowedPaymentMethodsProvider {
-    getAllowedPaymentMethods(): google.payments.api.CardPaymentMethod[] {
+    public getAllowedPaymentMethods(): google.payments.api.CardPaymentMethod[] {
         return [
             {
                 type: 'CARD',

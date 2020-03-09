@@ -1,7 +1,9 @@
 import { PaymentProcessor } from "../interfaces/payment-processor";
+import { injectable } from "inversify";
 
+@injectable()
 export class TestPaymentProcessor implements PaymentProcessor {
-    onSucess(paymentData: google.payments.api.PaymentData): void {
+    public onSucess(paymentData: google.payments.api.PaymentData): void {
         let paymentToken = paymentData.paymentMethodData.tokenizationData.token;
         let token = JSON.parse(paymentToken as string);
         let signature = token.signature;
@@ -10,7 +12,7 @@ export class TestPaymentProcessor implements PaymentProcessor {
         console.log("signedMessage: " + signedMessage);
     }    
     
-    onError(reason: string): void {
+    public onError(reason: string): void {
         console.log(reason);
     }
 }
