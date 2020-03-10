@@ -4,7 +4,9 @@ import { MerchantInfoProvider } from "../interfaces/merchant-info-provider";
 import { AllowedPaymentMethodsProvider } from "../interfaces/allowed-payment-methods-provider";
 import { RequestBuilder } from "../interfaces/request-builder";
 import { injectable, inject } from "inversify";
-
+/**
+ * Build a payment data request based on sub fields injected on construtor
+ */
 @injectable()
 export class PaymentDataRequestBuilder implements RequestBuilder<google.payments.api.PaymentDataRequest>{
 
@@ -14,6 +16,9 @@ export class PaymentDataRequestBuilder implements RequestBuilder<google.payments
         @inject("AllowedPaymentMethodsProvider") private allowedPaymentMethodsProvider: AllowedPaymentMethodsProvider,
         @inject("MerchantInfoProvider") private merchantInfoProvider: MerchantInfoProvider) { }
 
+    /**
+     * @returns {google.payments.api.PaymentDataRequest} that represents the request builded based on injected providers
+     */
     public getRequest(): google.payments.api.PaymentDataRequest {
         let apiVersion = this.apiVersionProvider.getApiVersion();
 
@@ -23,6 +28,7 @@ export class PaymentDataRequestBuilder implements RequestBuilder<google.payments
             allowedPaymentMethods: this.allowedPaymentMethodsProvider.getAllowedPaymentMethods(),
             transactionInfo: this.transactionInfoProvider.getTransactionInfo(),
             merchantInfo: this.merchantInfoProvider.getMerchartInfo(),
+            
         }
     }
 }

@@ -218,7 +218,7 @@ function getGoogleTransactionInfo() {
       },
       {
         label: "Tax",
-        type: "TAX",
+        type: "LINE_ITEM",
         price: "1.00",
       }
     ],
@@ -236,7 +236,7 @@ function getGoogleTransactionInfo() {
 function onGooglePaymentButtonClicked() {
   const paymentDataRequest = getGooglePaymentDataRequest();
   paymentDataRequest.transactionInfo = getGoogleTransactionInfo();
-
+  console.log(JSON.stringify(paymentDataRequest));
   const paymentsClient = getGooglePaymentsClient();
   paymentsClient.loadPaymentData(paymentDataRequest);
 }

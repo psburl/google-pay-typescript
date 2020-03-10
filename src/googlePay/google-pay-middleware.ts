@@ -35,6 +35,7 @@ export class GooglePayMiddleware {
             onClick: () => {
                 let request = this.paymentDataRequestBuilder.getRequest();
                 console.log(JSON.stringify(request))
+                this.googlePaymentClient.prefetchPaymentData(request);
                 this.googlePaymentClient.loadPaymentData(request)
                     .then((paymentData) => this.paymentDataProcessor.onSucess(paymentData))
                     .catch((reason) => this.paymentDataProcessor.onError(reason));

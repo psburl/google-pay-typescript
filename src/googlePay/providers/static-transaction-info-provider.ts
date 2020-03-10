@@ -8,15 +8,23 @@ export class StaticTransactionInfoProvider implements TransactionInfoProvider {
             displayItems: [
                 {
                     label: "Subtotal",
+                    type: "SUBTOTAL",
+                    price: "11.00"
+                },
+                {
+                    label: "Item 1",
                     type: "LINE_ITEM",
-                    price: "11.00",
+                    price: "1.00",
+                    status: "PENDING"
                 }
             ],
+            transactionId: "asd",
             countryCode: "BR",
             currencyCode: "BRL",
             totalPriceStatus: "FINAL",
-            totalPrice: "11.00",
+            totalPrice: "12.00",
             totalPriceLabel: "Total",
+            checkoutOption: "COMPLETE_IMMEDIATE_PURCHASE"
         };
     }
 }
