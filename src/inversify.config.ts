@@ -17,6 +17,8 @@ import { MerchantInfoProvider } from "./googlePay/interfaces/merchant-info-provi
 import { PaymentProcessor } from "./googlePay/interfaces/payment-processor";
 import { StaticCallbackIntentsProvider } from "./googlePay/providers/static-callback-intents-provider";
 import { CallbackIntentsProvider } from "./googlePay/interfaces/callback-intents-provider";
+import { ShippingAddressInfoProvider } from "./googlePay/interfaces/shipping-address-info-provider";
+import { StaticShippingAddressInfoProvider } from "./googlePay/providers/static-shipping-address-info-provider";
 
 
 let kernel = new Kernel();
@@ -28,6 +30,7 @@ kernel.bind<RequestBuilder<google.payments.api.PaymentDataRequest>>("PaymentData
 kernel.bind<TransactionInfoProvider>("TransactionInfoProvider").to(StaticTransactionInfoProvider);
 kernel.bind<MerchantInfoProvider>("MerchantInfoProvider").to(StaticMerchantInfoProvider);
 kernel.bind<CallbackIntentsProvider>("CallbackIntentsProvider").to(StaticCallbackIntentsProvider);
+kernel.bind<ShippingAddressInfoProvider>("ShippingAddressInfoProvider").to(StaticShippingAddressInfoProvider);
 kernel.bind<PaymentProcessor>("PaymentProcessor").to(TestPaymentProcessor);
 kernel.bind<GooglePayMiddleware>("GooglePayMiddleware").to(GooglePayMiddleware);
 

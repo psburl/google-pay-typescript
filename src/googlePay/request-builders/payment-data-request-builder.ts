@@ -5,6 +5,7 @@ import { AllowedPaymentMethodsProvider } from "../interfaces/allowed-payment-met
 import { RequestBuilder } from "../interfaces/request-builder";
 import { injectable, inject } from "inversify";
 import { CallbackIntentsProvider } from "../interfaces/callback-intents-provider";
+import { ShippingAddressInfoProvider } from "../interfaces/shipping-address-info-provider";
 /**
  * Build a payment data request based on sub fields injected on construtor
  */
@@ -16,7 +17,8 @@ export class PaymentDataRequestBuilder implements RequestBuilder<google.payments
         @inject("TransactionInfoProvider") private transactionInfoProvider: TransactionInfoProvider,
         @inject("AllowedPaymentMethodsProvider") private allowedPaymentMethodsProvider: AllowedPaymentMethodsProvider,
         @inject("MerchantInfoProvider") private merchantInfoProvider: MerchantInfoProvider,
-        @inject("CallbackIntentsProvider") private callbackIntentsProvider: CallbackIntentsProvider) { }
+        @inject("CallbackIntentsProvider") private callbackIntentsProvider: CallbackIntentsProvider,
+        @inject("ShippingAddressInfoProvider") private shippingAddressInfoProvider: ShippingAddressInfoProvider) { }
 
     /**
      * @returns {google.payments.api.PaymentDataRequest} that represents the request builded based on injected providers
@@ -30,7 +32,9 @@ export class PaymentDataRequestBuilder implements RequestBuilder<google.payments
             allowedPaymentMethods: this.allowedPaymentMethodsProvider.getAllowedPaymentMethods(),
             transactionInfo: this.transactionInfoProvider.getTransactionInfo(),
             merchantInfo: this.merchantInfoProvider.getMerchartInfo(),
-            callbackIntents: this.callbackIntentsProvider.getCallbackIntents()
+            callbackIntents: this.callbackIntentsProvider.getCallbackIntents(),
+            shippingAddressRequired: this.shippingAddressInfoProvider.isRequired(),
+            shippingAddressParameters: this.shippingAddressInfoProvider.getParameters()
         }
     }
 }
