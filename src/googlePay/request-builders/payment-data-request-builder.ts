@@ -4,6 +4,7 @@ import { MerchantInfoProvider } from "../interfaces/merchant-info-provider";
 import { AllowedPaymentMethodsProvider } from "../interfaces/allowed-payment-methods-provider";
 import { RequestBuilder } from "../interfaces/request-builder";
 import { injectable, inject } from "inversify";
+import { CallbackIntentsProvider } from "../interfaces/callback-intents-provider";
 /**
  * Build a payment data request based on sub fields injected on construtor
  */
@@ -14,7 +15,8 @@ export class PaymentDataRequestBuilder implements RequestBuilder<google.payments
         @inject("ApiVersionProvider") private apiVersionProvider: ApiVersionProvider,
         @inject("TransactionInfoProvider") private transactionInfoProvider: TransactionInfoProvider,
         @inject("AllowedPaymentMethodsProvider") private allowedPaymentMethodsProvider: AllowedPaymentMethodsProvider,
-        @inject("MerchantInfoProvider") private merchantInfoProvider: MerchantInfoProvider) { }
+        @inject("MerchantInfoProvider") private merchantInfoProvider: MerchantInfoProvider,
+        @inject("CallbackIntentsProvider") private callbackIntentsProvider: CallbackIntentsProvider) { }
 
     /**
      * @returns {google.payments.api.PaymentDataRequest} that represents the request builded based on injected providers
@@ -28,7 +30,7 @@ export class PaymentDataRequestBuilder implements RequestBuilder<google.payments
             allowedPaymentMethods: this.allowedPaymentMethodsProvider.getAllowedPaymentMethods(),
             transactionInfo: this.transactionInfoProvider.getTransactionInfo(),
             merchantInfo: this.merchantInfoProvider.getMerchartInfo(),
-            
+            callbackIntents: this.callbackIntentsProvider.getCallbackIntents()
         }
     }
 }

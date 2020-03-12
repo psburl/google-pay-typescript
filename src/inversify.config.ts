@@ -15,6 +15,8 @@ import { RequestBuilder } from "./googlePay/interfaces/request-builder";
 import { TransactionInfoProvider } from "./googlePay/interfaces/transaction-info-provider";
 import { MerchantInfoProvider } from "./googlePay/interfaces/merchant-info-provider";
 import { PaymentProcessor } from "./googlePay/interfaces/payment-processor";
+import { StaticCallbackIntentsProvider } from "./googlePay/providers/static-callback-intents-provider";
+import { CallbackIntentsProvider } from "./googlePay/interfaces/callback-intents-provider";
 
 
 let kernel = new Kernel();
@@ -25,6 +27,7 @@ kernel.bind<RequestBuilder<google.payments.api.IsReadyToPayRequest>>("IsReadyToP
 kernel.bind<RequestBuilder<google.payments.api.PaymentDataRequest>>("PaymentDataRequestBuilder").to(PaymentDataRequestBuilder);
 kernel.bind<TransactionInfoProvider>("TransactionInfoProvider").to(StaticTransactionInfoProvider);
 kernel.bind<MerchantInfoProvider>("MerchantInfoProvider").to(StaticMerchantInfoProvider);
+kernel.bind<CallbackIntentsProvider>("CallbackIntentsProvider").to(StaticCallbackIntentsProvider);
 kernel.bind<PaymentProcessor>("PaymentProcessor").to(TestPaymentProcessor);
 kernel.bind<GooglePayMiddleware>("GooglePayMiddleware").to(GooglePayMiddleware);
 
