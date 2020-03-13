@@ -5,6 +5,7 @@ import { RequestBuilder } from "../interfaces/request-builder";
 import { injectable, inject } from "inversify";
 import { CallbackIntentsProvider } from "../interfaces/callback-intents-provider";
 import { ShippingAddressInfoProvider } from "../interfaces/shipping-address-info-provider";
+import { TYPES } from "../constant/types";
 /**
  * Build a payment data request based on sub fields injected on construtor
  */
@@ -12,11 +13,11 @@ import { ShippingAddressInfoProvider } from "../interfaces/shipping-address-info
 export class PaymentDataRequestBuilder implements RequestBuilder<google.payments.api.PaymentDataRequest>{
 
     constructor(
-        @inject("TransactionInfoProvider") private transactionInfoProvider: TransactionInfoProvider,
-        @inject("AllowedPaymentMethodsProvider") private allowedPaymentMethodsProvider: AllowedPaymentMethodsProvider,
-        @inject("MerchantInfoProvider") private merchantInfoProvider: MerchantInfoProvider,
-        @inject("CallbackIntentsProvider") private callbackIntentsProvider: CallbackIntentsProvider,
-        @inject("ShippingAddressInfoProvider") private shippingAddressInfoProvider: ShippingAddressInfoProvider) { }
+        @inject(TYPES.TransactionInfoProvider) private transactionInfoProvider: TransactionInfoProvider,
+        @inject(TYPES.AllowedPaymentMethodsProvider) private allowedPaymentMethodsProvider: AllowedPaymentMethodsProvider,
+        @inject(TYPES.MerchantInfoProvider) private merchantInfoProvider: MerchantInfoProvider,
+        @inject(TYPES.CallbackIntentsProvider) private callbackIntentsProvider: CallbackIntentsProvider,
+        @inject(TYPES.ShippingAddressInfoProvider) private shippingAddressInfoProvider: ShippingAddressInfoProvider) { }
 
     /**
      * @returns {google.payments.api.PaymentDataRequest} that represents the request builded based on injected providers

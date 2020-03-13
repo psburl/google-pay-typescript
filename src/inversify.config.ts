@@ -17,19 +17,39 @@ import { StaticCallbackIntentsProvider } from "./googlePay/providers/static-call
 import { CallbackIntentsProvider } from "./googlePay/interfaces/callback-intents-provider";
 import { ShippingAddressInfoProvider } from "./googlePay/interfaces/shipping-address-info-provider";
 import { StaticShippingAddressInfoProvider } from "./googlePay/providers/static-shipping-address-info-provider";
+import { TYPES } from "./googlePay/constant/types";
 
 
 let kernel = new Kernel();
-kernel.bind<PaymentOptionsProvider>("PaymentOptionsProvider").to(StaticPaymentOptionsProvider);
-kernel.bind<AllowedPaymentMethodsProvider>("AllowedPaymentMethodsProvider").to(StaticAllowedPaymentMethodsProvider);
-kernel.bind<RequestBuilder<google.payments.api.IsReadyToPayRequest>>("IsReadyToPayRequestBuilder").to(IsReadyToPayRequestBuilder);
-kernel.bind<RequestBuilder<google.payments.api.PaymentDataRequest>>("PaymentDataRequestBuilder").to(PaymentDataRequestBuilder);
-kernel.bind<TransactionInfoProvider>("TransactionInfoProvider").to(StaticTransactionInfoProvider);
-kernel.bind<MerchantInfoProvider>("MerchantInfoProvider").to(StaticMerchantInfoProvider);
-kernel.bind<CallbackIntentsProvider>("CallbackIntentsProvider").to(StaticCallbackIntentsProvider);
-kernel.bind<ShippingAddressInfoProvider>("ShippingAddressInfoProvider").to(StaticShippingAddressInfoProvider);
-kernel.bind<PaymentProcessor>("PaymentProcessor").to(TestPaymentProcessor);
-kernel.bind<GooglePayMiddleware>("GooglePayMiddleware").to(GooglePayMiddleware);
 
+kernel.bind<PaymentOptionsProvider>(TYPES.PaymentOptionsProvider)
+    .to(StaticPaymentOptionsProvider);
+
+kernel.bind<AllowedPaymentMethodsProvider>(TYPES.AllowedPaymentMethodsProvider)
+    .to(StaticAllowedPaymentMethodsProvider);
+
+kernel.bind<RequestBuilder<google.payments.api.IsReadyToPayRequest>>(TYPES.IsReadyToPayRequestBuilder)
+    .to(IsReadyToPayRequestBuilder);
+
+kernel.bind<RequestBuilder<google.payments.api.PaymentDataRequest>>(TYPES.PaymentDataRequestBuilder)
+    .to(PaymentDataRequestBuilder);
+
+kernel.bind<TransactionInfoProvider>(TYPES.TransactionInfoProvider)
+    .to(StaticTransactionInfoProvider);
+
+kernel.bind<MerchantInfoProvider>(TYPES.MerchantInfoProvider)
+    .to(StaticMerchantInfoProvider);
+
+kernel.bind<CallbackIntentsProvider>(TYPES.CallbackIntentsProvider)
+    .to(StaticCallbackIntentsProvider);
+
+kernel.bind<ShippingAddressInfoProvider>(TYPES.ShippingAddressInfoProvider)
+    .to(StaticShippingAddressInfoProvider);
+
+kernel.bind<PaymentProcessor>(TYPES.PaymentProcessor)
+    .to(TestPaymentProcessor);
+
+kernel.bind<GooglePayMiddleware>(TYPES.GooglePayMiddleware)
+    .to(GooglePayMiddleware);
 
 export default kernel;
