@@ -7,9 +7,7 @@ import { PaymentDataRequestBuilder } from "./googlePay/request-builders/payment-
 import { StaticMerchantInfoProvider } from "./googlePay/providers/static-merchant-info-provider";
 import { StaticTransactionInfoProvider } from "./googlePay/providers/static-transaction-info-provider";
 import { TestPaymentProcessor } from "./googlePay/payment-processors/test-payment-processor";
-import { StaticApiVersionProvider } from "./googlePay/providers/static-api-version-provider";
 import { PaymentOptionsProvider } from "./googlePay/interfaces/payment-options-provider";
-import { ApiVersionProvider } from "./googlePay/interfaces/api-version-provider";
 import { AllowedPaymentMethodsProvider } from "./googlePay/interfaces/allowed-payment-methods-provider";
 import { RequestBuilder } from "./googlePay/interfaces/request-builder";
 import { TransactionInfoProvider } from "./googlePay/interfaces/transaction-info-provider";
@@ -23,7 +21,6 @@ import { StaticShippingAddressInfoProvider } from "./googlePay/providers/static-
 
 let kernel = new Kernel();
 kernel.bind<PaymentOptionsProvider>("PaymentOptionsProvider").to(StaticPaymentOptionsProvider);
-kernel.bind<ApiVersionProvider>("ApiVersionProvider").to(StaticApiVersionProvider);
 kernel.bind<AllowedPaymentMethodsProvider>("AllowedPaymentMethodsProvider").to(StaticAllowedPaymentMethodsProvider);
 kernel.bind<RequestBuilder<google.payments.api.IsReadyToPayRequest>>("IsReadyToPayRequestBuilder").to(IsReadyToPayRequestBuilder);
 kernel.bind<RequestBuilder<google.payments.api.PaymentDataRequest>>("PaymentDataRequestBuilder").to(PaymentDataRequestBuilder);

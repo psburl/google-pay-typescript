@@ -6,5 +6,5 @@
  * @returns {google.payments.api.CardPaymentMethod[]} transaction info, suitable for use as transactionInfo property of PaymentDataRequest
  */
 export interface AllowedPaymentMethodsProvider {
-    getAllowedPaymentMethods(): google.payments.api.CardPaymentMethod[]
+    getAllowedPaymentMethods(): google.payments.api.PaymentMethodSpecification[]
 }
